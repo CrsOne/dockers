@@ -2,7 +2,7 @@ FROM krallin/ubuntu-tini:xenial
 ARG PHPVERSION="7.1"
 ################################################ DOCKER BASE ########################################
 # Apuntamos al Mirror chile
-RUN sed -i 's/http:\/\/archive/http:\/\/cl\.archive/g' /etc/apt/sources.list && apt-get update
+#RUN sed -i 's/http:\/\/archive/http:\/\/cl\.archive/g' /etc/apt/sources.list && apt-get update
 RUN apt-get update
 # Instalar Repositorios PHP
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends software-properties-common curl locales
