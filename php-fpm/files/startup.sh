@@ -1,6 +1,6 @@
 #!/bin/bash
 role=${CONTAINER_ROLE:-web}
-if [ -d "/opt/personal" ]; then
+if [ -d "/opt/develop" ]; then
 	if [ -z $PRODUCCION ]; then
     	cd /opt/develop
     	composer install
