@@ -1,5 +1,5 @@
 FROM krallin/ubuntu-tini:xenial
-ARG PHPVERSION="7.1"
+ARG PHPVERSION="7.2"
 ################################################ DOCKER BASE ########################################
 # Apuntamos al Mirror chile
 #RUN sed -i 's/http:\/\/archive/http:\/\/cl\.archive/g' /etc/apt/sources.list && apt-get update
