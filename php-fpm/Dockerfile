@@ -10,7 +10,7 @@ RUN DEBIAN_FRONTEND=noninteractive LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4F4EA0AAE5267A6C
 # Instalar PHP
 RUN apt-get update && apt-get -y install --no-install-recommends php$PHPVERSION-mysql php$PHPVERSION-curl php$PHPVERSION-xml \
-php$PHPVERSION-bcmath php$PHPVERSION-gd php$PHPVERSION-mbstring php$PHPVERSION-mcrypt php$PHPVERSION-zip php$PHPVERSION-ssh2 php$PHPVERSION-fpm php$PHPVERSION-intl  \
+php$PHPVERSION-bcmath php$PHPVERSION-gd php$PHPVERSION-mbstring  php$PHPVERSION-zip php$PHPVERSION-ssh2 php$PHPVERSION-fpm php$PHPVERSION-intl  \
 apt-transport-https ca-certificates build-essential php$PHPVERSION-xdebug bash-completion
 #Instalar Nodejs
 RUN curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
