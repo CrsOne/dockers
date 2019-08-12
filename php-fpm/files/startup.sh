@@ -11,7 +11,7 @@ touch /var/www/storage/logs/laravel.log
 case "$role" in
     web)
         service nginx start
-        php-fpm7.1 -y /etc/php/7.1/fpm/php-fpm.conf -R
+        php-fpm7.2 -y /etc/php/7.2/fpm/php-fpm.conf -R
     ;;
     worker)
         php /var/www/artisan queue:work --verbose
