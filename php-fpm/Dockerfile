@@ -31,8 +31,8 @@ RUN apt-get update && apt-get -y install nginx vim git poppler-utils && mkdir -p
 
 ADD files/startup.sh /opt/startup.sh
 ADD files/nginx.conf /etc/nginx/nginx.conf
-ADD files/www.conf /etc/php/7.1/fpm/pool.d/www.conf
-ADD files/xdebug.ini /etc/php/7.1/mods-available/xdebug.ini
+ADD files/www.conf /etc/php/7.2/fpm/pool.d/www.conf
+ADD files/xdebug.ini /etc/php/7.2/mods-available/xdebug.ini
 ADD files/vhost_desarrollo.conf /etc/nginx/sites-enabled/default
 #ADD docker/ssh /root/.ssh
 #RUN chmod 600 /root/.ssh/*
