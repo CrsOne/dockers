@@ -4,12 +4,10 @@ ARG PHPVERSION="7.2"
 # Apuntamos al Mirror chile
 #RUN sed -i 's/http:\/\/archive/http:\/\/cl\.archive/g' /etc/apt/sources.list && apt-get update
 RUN apt-get update
-
 # Instalar Repositorios PHP
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends software-properties-common curl locales
 RUN DEBIAN_FRONTEND=noninteractive LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4F4EA0AAE5267A6C
-
 # Instalar PHP
 RUN apt-get update && apt-get -y install --no-install-recommends php$PHPVERSION-mysql php$PHPVERSION-curl php$PHPVERSION-xml \
 php$PHPVERSION-bcmath php$PHPVERSION-gd php$PHPVERSION-mbstring  php$PHPVERSION-zip php$PHPVERSION-ssh2 php$PHPVERSION-fpm php$PHPVERSION-intl  \
@@ -22,21 +20,14 @@ RUN bash nodesource_setup.sh
 RUN apt install -y nodejs build-essential yarn
 # Composer Install
 ENV COMPOSER_ALLOW_SUPERUSER=1 SERVER_TYPE=SLAVE TZ=America/Santiago
-
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
        composer global require hirak/prestissimo
-
 #Servidor Web
 RUN apt-get update && apt-get -y install nginx vim git poppler-utils && mkdir -p /run/php/
-
+ADD files/xdebug.ini /etc/php/$PHPVERSION/mods-available/xdebug.ini
+ADD files/vhost_desarrollo.conf /etc/nginx/sites-enabled/default
 ADD files/startup.sh /opt/startup.sh
 ADD files/nginx.conf /etc/nginx/nginx.conf
-ADD files/www.conf /etc/php/7.2/fpm/pool.d/www.conf
-ADD files/xdebug.ini /etc/php/7.2/mods-available/xdebug.ini
-ADD files/vhost_desarrollo.conf /etc/nginx/sites-enabled/default
-#ADD docker/ssh /root/.ssh
-#RUN chmod 600 /root/.ssh/*
+ADD files/www.conf /etc/php/$PHPVERSION/fpm/pool.d/www.conf
 RUN chmod +x /opt/startup.sh
 CMD /opt/startup.sh
-
-

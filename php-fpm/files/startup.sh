@@ -1,6 +1,6 @@
 #!/bin/bash
 role=${CONTAINER_ROLE:-web}
-if [ -d "/var/www" ]; then
+if [ -d "/opt/personal" ]; then
 	if [ -z $PRODUCCION ]; then
     	cd /var/www
     	composer install
