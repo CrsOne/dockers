@@ -29,8 +29,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 #Servidor Web
 RUN apt-get update && apt-get -y install nginx vim git poppler-utils && mkdir -p /run/php/
 
-RUN mkdir -p /opt/develop/
-
 ADD files/startup.sh /opt/startup.sh
 ADD files/nginx.conf /etc/nginx/nginx.conf
 ADD files/www.conf /etc/php/7.1/fpm/pool.d/www.conf
